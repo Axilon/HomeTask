@@ -1,0 +1,130 @@
+package levelTwo;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class TaskOne {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("How much money do you have?");
+		double money = sc.nextDouble();
+		double m1 = money / 100000000;
+		double m2 = m1 % 100000000 / 10000000;
+		double m3 = m2 % 10000000 / 1000000;
+		double th1 = m3 % 1000000 / 100000;
+		double th2 = th1 % 100000 / 10000;
+		double th3 = th2 % 10000 / 1000;
+		double h = th3 % 1000 / 100;
+		double t = h % 100 / 10;
+		double n = t % 10;
+		double c1 = n % 0.1;
+		double c2 = c1 % 0.01;
+		
+		String[] number = new String[11];
+
+		String[] t1 = { " one ", " two ", " three ", " four ", " five ", " six ", " seven ", " eight ", " nine " };
+		String[] t2 = { " eleven ", " twelve ", " thirteen ", " fourteen ", " fifteen ", " sixteen ", " seventeen ",
+				" eighteen ", " nineteen " };
+		String[] t3 = { " ten ", " twenty ", " thirty ", " forty ", " fifty ", " sixty ", " sventy ", " eighty ",
+				" ninety " };
+		String[] t4 = { " hundred ", " thousand ", " million " };
+
+		if (money >= 1000000000) {
+			System.out.println("Oh, you are lucky, you have more than one billion =)");
+		} else {
+			for (int i = 0; i <= 10; i++) {
+				if (i == m1) {
+					i -= 1;
+					number[0] = t1[i] + t4[0];
+				} else {
+					continue;
+				}
+				if (i == m2 && (!(m2 < 2))) {
+					i -= 1;
+					number[1] = t3[i];
+				} else if (i == m3 && m2 == 1) {
+					i -= 1;
+					number[1] = t2[i];
+				} else if (m2 != 1 && i == m3) {
+					i -= 1;
+					number[2] = t1[i];
+				} else {
+					continue;
+				}
+
+			}
+			for (int j = 0; j <= 10; j++) {
+				if (j == th1) {
+					j -= 1;
+					number[3] = t1[j] + t4[0];
+				} else {
+					continue;
+				}
+				if (j == th2 && (!(th2 < 2))) {
+					j -= 1;
+					number[4] = t3[j];
+				} else if (j == th3 && th2 == 1) {
+					j -= 1;
+					number[4] = t2[j];
+				} else if (th2 != 1 && j == th3) {
+					j -= 1;
+					number[5] = t1[j];
+				} else {
+					continue;
+				}
+			}
+			for (int i = 0; i <= 10; i++) {
+				if (i == h) {
+					i -= 1;
+					number[6] = t1[i] + t4[0];
+				} else {
+					continue;
+				}
+				if (i == t && (!(t < 2))) {
+					i -= 1;
+					number[7] = t3[i];
+				} else if (i == n && t == 1) {
+					i -= 1;
+					number[7] = t2[i];
+				} else if (t != 1 && i == n) {
+					i -= 1;
+					number[8] = t1[i];
+				} else {
+					continue;
+				}
+			}
+			for (int j = 0; j <= 10; j++) {
+
+				if (j == c1 && (!(c1 < 2))) {
+					j -= 1;
+					number[9] = t3[j];
+				} else if (j == c2 && t == c1) {
+					j -= 1;
+					number[9] = t2[j];
+				} else if (c1 != 1 && j == c2) {
+					j -= 1;
+					number[10] = t1[j];
+				} else {
+					continue;
+				}
+
+			
+			}
+	
+		}
+			Arrays.toString(number);
+if (!(c1 == 0 && c2 == 0)) {
+			System.out.print(number[0] + number[1] + number[2] + t4[2] + number[3] + number[4] + number[5] + t4[1]
+					+ number[6] + number[7] + number[8] + " dollars and " + number[9] + number[10] + " cents");
+		} else {
+			System.out.print(number[0] + number[1] + number[2] + t4[2] + number[3] + number[4] + number[5] + t4[1]
+					+ number[6] + number[7] + number[8] + " dollars ");
+		}
+		sc.close();
+
+	}
+
+}
